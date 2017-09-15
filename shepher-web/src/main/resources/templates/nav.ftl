@@ -51,7 +51,7 @@
                     </ul>
                 </li>
             </#if>
-                <li><a href="http://git.n.xiaomi.com/cloud-common/shepher/wikis/home" target="_blank">Wiki</a></li>
+                <li><a href="https://github.com/XiaoMi/shepher/blob/master/README.md" target="_blank">Wiki</a></li>
             </ul>
 
         </div><!--/.nav-collapse -->

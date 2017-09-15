@@ -1,4 +1,4 @@
-![LOGO](../raw/master/Docs/images/logo_full_color_h100.png)
+![LOGO](Docs/images/logo_full_color_h100.png)
 
 Shepher 是一款 ZooKeeper 的管理工具。在小米公司，我们用它作为配置管理中心。[Readme in English](README.md)
 
@@ -22,10 +22,10 @@ XDiamond | 配置中心 | √ |   |   |   | √ | √ |   | √
 
 ## 系统截图
 - 首页
-![Home](../raw/master/Docs/images/home.png)
+![Home](Docs/images/home.png)
 
 - 节点查看
-![Node view](../raw/master/Docs/images/node-view.png)
+![Node view](Docs/images/node-view.png)
 
 ## 安装
 

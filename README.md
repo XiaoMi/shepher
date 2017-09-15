@@ -1,4 +1,4 @@
-![LOGO](../raw/master/Docs/images/logo_full_color_h100.png)
+![LOGO](Docs/images/logo_full_color_h100.png)
 
 Shepher is a management tool of ZooKeeper. In Xiaomi, we use it as the configuration management center. [Readme 中文版](README-zh.md)
 
@@ -21,10 +21,10 @@ XDiamond | Configuration center | √ |   |   |   | √ | √ |   | √
 
 ## Screenshots
 - Home
-![Home](../raw/master/Docs/images/home.png)
+![Home](Docs/images/home.png)
 
 - Node view
-![Node view](../raw/master/Docs/images/node-view.png)
+![Node view](Docs/images/node-view.png)
 
 ## Installation
 
