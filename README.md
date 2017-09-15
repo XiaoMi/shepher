@@ -2,7 +2,7 @@
 
 Shepher is a management tool of ZooKeeper. In Xiaomi, we use it as the configuration management center. [Readme 中文版](README-zh.md)
 
-## Character
+## Features
 - Visualized operation of ZooKeeper node
 - Snapshot management of ZooKeeper node
 - Modified Diff and Review function of ZooKeeper node
