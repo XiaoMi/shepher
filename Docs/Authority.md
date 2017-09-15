@@ -7,7 +7,7 @@ It is different from common administrator centralization managed privileges; aut
 Structure chart of authority management:
 Among which, authority of zookeeper takes node as a unit, a group applies for authority to the administrator, it is approved and authorized by super administrator. Group members is consist of users, users could choose to establish new groups or join into existing groups.
 
-![Permission design](../raw/master/Docs/images/permission-design.png)
+![Permission design](images/permission-design.png)
 
 ## Function instruction
 

@@ -7,7 +7,7 @@
 权限管理结构图：
 其中，zookeeper的权限以节点为单位，小组向管理员申请权限，由超级管理员负责审核和授权。小组成员由用户组成，用户可以选择创建新的小组或者加入已有的小组。
 
-![权限管理结构图](../raw/master/Docs/images/permission-design.png)
+![权限管理结构图](images/permission-design.png)
 
 ## 功能说明
 
