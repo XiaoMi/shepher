@@ -1,0 +1,9 @@
+DROP TABLE `cluster`;
+DROP TABLE `need_review`;
+DROP TABLE `permission`;
+DROP TABLE `permission_team`;
+DROP TABLE `review_request`;
+DROP TABLE `snapshot`;
+DROP TABLE `team`;
+DROP TABLE `user`;
+DROP TABLE `user_team`;

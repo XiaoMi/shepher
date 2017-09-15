@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<FindBugsFilter>
+    <Match>
+        <Bug category="MALICIOUS_CODE,PERFORMANCE"/>
+    </Match>
+
+</FindBugsFilter>

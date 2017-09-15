@@ -1,0 +1,7 @@
+.idea
+*.iml
+target
+release
+logs
+.arcconfig
+*.xml.versionsBackup

@@ -1,0 +1,49 @@
+<assembly
+    xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+  <id>src</id>
+
+  <formats>
+    <format>tar.gz</format>
+  </formats>
+
+  <baseDirectory>shepher-${project.version}-src</baseDirectory>
+
+  <fileSets>
+    <fileSet>
+      <directory>${project.parent.basedir}</directory>
+
+      <excludes>
+        <exclude>**/*.jar</exclude>
+        <exclude>**/target/**</exclude>
+        <exclude>logs</exclude>
+      </excludes>
+
+      <includes>
+        <include>README.md</include>
+        <include>README-zh.md</include>
+        <include>LICENSE.txt</include>
+        <include>NOTICE.txt</include>
+        <include>CHANGES.txt</include>
+        <include>VERSION</include>
+        <include>Dockerfile</include>
+        <include>docker-compose.yml</include>
+        <include>bin/**/*</include>
+        <include>conf/**/*</include>
+        <include>db/**/*</include>
+        <include>deploy/**/*</include>
+        <include>Docs/**/*</include>
+        <include>packaging/pom.xml</include>
+        <include>packaging/src/**/*</include>
+        <include>pom.xml</include>
+        <include>shepher-web/**/*</include>
+        <include>shepher-common/**/*</include>
+        <include>shepher-model/**/*</include>
+        <include>shepher-service/**/*</include>
+      </includes>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
+  </fileSets>
+</assembly>

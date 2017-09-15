@@ -1,0 +1,58 @@
+<assembly
+    xmlns="http://maven.apache.org/ASSEMBLY/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/4.0.0 http://maven.apache.org/xsd/assembly-4.0.0.xsd">
+
+  <id>bin</id>
+
+  <formats>
+    <format>dir</format>
+  </formats>
+
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <moduleSets>
+    <moduleSet>
+        <useAllReactorProjects>true</useAllReactorProjects>
+        <includes>
+            <include>com.xiaomi:shepher-web</include>
+            <include>com.xiaomi:shepher-model</include>
+            <include>com.xiaomi:shepher-common</include>
+            <include>com.xiaomi:shepher-service</include>
+        </includes>
+        <binaries>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+        </binaries>
+    </moduleSet>
+  </moduleSets>
+
+  <fileSets>
+      <fileSet>
+          <directory>${project.parent.basedir}</directory>
+
+          <excludes>
+            <exclude>**/*.jar</exclude>
+            <exclude>**/target/**</exclude>
+            <exclude>logs</exclude>
+          </excludes>
+
+          <includes>
+              <include>README.md</include>
+              <include>README-zh.md</include>
+              <include>LICENSE.txt</include>
+              <include>NOTICE.txt</include>
+              <include>CHANGES.txt</include>
+              <include>VERSION</include>
+              <include>Dockerfile</include>
+              <include>docker-compose.yml</include>
+              <include>bin/**/*</include>
+              <include>conf/**/*</include>
+              <include>db/**/*</include>
+              <include>deploy/**/*</include>
+          </includes>
+          <outputDirectory>/</outputDirectory>
+      </fileSet>
+  </fileSets>
+
+</assembly>
+

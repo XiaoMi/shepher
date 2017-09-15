@@ -1,0 +1,94 @@
+body {
+    /*font-size: 16px;*/
+    min-height: 800px;
+}
+
+.navbar-static-top {
+    margin-bottom: 10px;
+}
+
+.placeholder {
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    display: inline-block;
+    padding-left: 25px;
+    margin-left: 20px;
+}
+
+.rowbtn {
+    margin-left: 5px;
+}
+
+.formatRadio {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.radio {
+    display: inline-block;
+    padding-left: 25px;
+}
+
+.CodeMirror-merge, .CodeMirror-merge .CodeMirror, .CodeMirror {
+    min-height: 750px;
+    height: 750px;
+}
+
+.CodeMirror-merge-l-chunk {
+    background: #555871;
+}
+
+.CodeMirror pre {
+    font-size: 14px;
+}
+
+.CodeMirror-merge-2pane .CodeMirror-merge-gap {
+    width: 2%;
+}
+
+.CodeMirror-merge-2pane .CodeMirror-merge-pane {
+    width: 49%;
+}
+
+.caption {
+    background-color: #ECF0F1;
+    border-color: #ECF0F1;
+    color: #2C3E50;
+}
+
+.list-group {
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.list-group-item {
+    padding: 1px 10px;
+    word-break: break-all;
+}
+
+.breadcrumb {
+    overflow: hidden;
+    word-break: break-all;
+    font-size: 16px;
+}
+
+.diff-breadcrumb {
+    margin-bottom: 0px;
+}
+
+.info-table {
+    margin-bottom: 0px;
+}
+
+.diff-view {
+    min-height: 600px;
+    height: 600px;
+}
+
+.diff-form {
+    display: inline-block;
+}
