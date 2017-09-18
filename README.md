@@ -7,7 +7,7 @@ Shepher is a management tool of ZooKeeper. In Xiaomi, we use it as the configura
 - Snapshot management of ZooKeeper node
 - Modified Diff and Review function of ZooKeeper node
 - Mail operation notification of ZooKeeper node
-- Integrates CAS and LDAP log
+- CAS and LDAP integration
 - Authority management, reference to [Authority management instruction](Docs/Authority.md)
 
 ## Function comparison of similar products
