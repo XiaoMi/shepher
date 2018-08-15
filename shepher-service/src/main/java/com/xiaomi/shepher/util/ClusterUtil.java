@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,22 @@ public class ClusterUtil {
     private static Set<String> publicClusters = new HashSet<>();
     private static List<Cluster> clusters = new CopyOnWriteArrayList<>();
     private static Map<String, String> clusterMap = new ConcurrentHashMap<>();
+    private static ClusterLoadSchedule clusterLoadSchedule;
+
+    @Autowired
+    private ClusterLoadSchedule schedule;
+
+    @PostConstruct
+    private void initClusterLoadSchedule() {
+        clusterLoadSchedule = schedule;
+    }
 
     public static List<Cluster> getClusters() {
         return clusters;
+    }
+
+    public static void refreshClusters() {
+        clusterLoadSchedule.loadCluster();
     }
 
     public static Map<String, String> getClusterMap() {

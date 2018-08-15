@@ -20,7 +20,7 @@
             <td><a href="/clusters/${cluster.name}/nodes">${cluster.name}</a></td>
             <td>${cluster.config}</td>
             <td>
-                <button class="btn btn-primary btn-xs" onclick="showUpdateModal('${cluster.name}'); return false;">
+                <button class="btn btn-primary btn-xs" onclick="showUpdateModal('${cluster.name}', '${cluster.config}'); return false;">
                     Update
                 </button>
                 <button class="btn btn-danger btn-xs" onclick="showDeleteModal('${cluster.name}'); return false;">
@@ -50,7 +50,6 @@
     function onButtonClick(form, action, method) {
         form.action = action;
         form.method = method;
-
         form.submit();
     }
 
@@ -59,8 +58,9 @@
             keyboard: true
         })
     }
-    function showUpdateModal(clusterName) {
+    function showUpdateModal(clusterName, clusterConfig) {
         $('#update-name').attr('value', clusterName);
+        $('#update-config').attr('value', clusterConfig);
         $('#updateModal').modal({
             keyboard: true
         })

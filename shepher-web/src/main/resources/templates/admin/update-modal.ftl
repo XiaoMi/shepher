@@ -21,10 +21,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="cluster-config" class="col-lg-2 control-label">Config</label>
+                            <label for="update-config" class="col-lg-2 control-label">Config</label>
                             <div class="col-lg-10">
-                                <input name="config" type="text" class="form-control input-sm" id="cluster-config"
-                                       placeholder="Config">
+                                <input name="config" type="text" class="form-control input-sm" id="update-config"
+                                       placeholder="Config"/>
                             </div>
                         </div>
                     </fieldset>

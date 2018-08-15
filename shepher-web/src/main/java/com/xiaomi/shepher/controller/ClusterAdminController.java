@@ -21,6 +21,7 @@ import com.xiaomi.shepher.common.Jurisdiction;
 import com.xiaomi.shepher.common.LoginRequired;
 import com.xiaomi.shepher.exception.ShepherException;
 import com.xiaomi.shepher.service.ClusterAdminService;
+import com.xiaomi.shepher.util.ClusterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,6 +81,7 @@ public class ClusterAdminController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestParam("name") String name, @RequestParam("config") String config) throws ShepherException {
         clusterAdminService.update(name, config);
+        ClusterUtil.refreshClusters();
         return "redirect:/admin";
     }
 
