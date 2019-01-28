@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configurers.ldap.LdapAuthenticationProviderConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private String ldapPassword;
     @Value("${ldap.dn}")
     private String ldapDn;
+    @Value("#{'${ldap.allow.ou}'.split('\\|')}")
+    private String[] ldapAllowOu;
 
     @Value("${demo.admin.name}")
     private String demoAdminName;
@@ -98,10 +101,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         if (ShepherConstants.LOGIN_TYPE_LDAP.equals(loginType.toUpperCase())) {
-            auth.ldapAuthentication()
-                    .userDnPatterns("uid={0},ou=people")
-                    .groupSearchBase("ou=groups")
-                    .contextSource()
+            LdapAuthenticationProviderConfigurer ldapAuth = auth.ldapAuthentication();
+            ldapAuth.userSearchFilter("uid={0}");
+            for (String ldapOu : ldapAllowOu) {
+                ldapAuth.groupSearchBase(ldapOu);
+            }
+            ldapAuth.contextSource()
                     .url(ldapUrl)
                     .managerPassword(ldapPassword)
                     .managerDn(ldapDn);
