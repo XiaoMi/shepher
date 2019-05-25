@@ -1,3 +1,9 @@
+FROM maven:3.6-jdk-8-alpine AS builder
+WORKDIR /usr/shepher
+
+COPY . .
+RUN mvn install
+
 FROM java:8-jdk
 
 
@@ -9,7 +15,10 @@ ENV BASE_DIR /usr/shepher
 
 WORKDIR $SHEPHER_HOME
 
-COPY ./lib/*.jar $SHEPHER_HOME/lib/
-COPY ./bin/wait-for-it.sh $SHEPHER_HOME
-COPY ./conf/* $SHEPHER_HOME/conf/
-CMD ./wait-for-it.sh -t 300 db:3306 && java -jar lib/shepher-web-1.0.jar --spring.config.location=conf/application-base.properties,conf/application-docker.properties -Djava.ext.dirs=lib
+COPY --from=builder /usr/shepher/shepher-web/target/*.jar $SHEPHER_HOME/lib/
+COPY --from=builder /usr/shepher/shepher-common/target/*.jar $SHEPHER_HOME/lib/
+COPY --from=builder /usr/shepher/shepher-model/target/*.jar $SHEPHER_HOME/lib/
+COPY --from=builder /usr/shepher/shepher-service/target/*.jar $SHEPHER_HOME/lib/
+
+COPY --from=builder /usr/shepher/conf/* $SHEPHER_HOME/conf/
+CMD java -jar lib/shepher-1.0.jar --spring.config.location=conf/application-base.properties,conf/application-docker.properties -Djava.ext.dirs=lib

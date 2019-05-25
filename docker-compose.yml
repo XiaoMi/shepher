@@ -1,21 +1,21 @@
-version: '2'
+version: '2.4'
 services:
-  db: 
-    image: mysql
+  db:
+    build: ./db
+    image: shepher-db
     environment:
       MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d
+      MYSQL_DATABASE: shepher
   web:
     build: ./
     image: shepher
     ports:
        - "8089:8089"
     depends_on:
-       - db
-       - zookeeper
-    links:
-       - db
+       db:
+         condition: service_healthy
+       zookeeper:
+         condition: service_started
   zookeeper:
     image: zookeeper
     expose:

@@ -84,15 +84,16 @@ Development environment deployment includes local compilation deployment and Doc
 MySQL and ZooKeeper will be automatic integrated when Docker deployment is used, and automatically import `db/init.sql` into MySQL, no self installation is needed.
 
 1. Install Docker, take Ubuntu system for example, install [docker engine](https://docs.docker.com/engine/installation/#installation) and [docker-compose](https://docs.docker.com/compose/install/)
-2. Enter install directories
+2. Clone repo
 
     ```sh
-    $ cd shepher-packaging/target/shepher-packaging-{version}-bin
+    $ git clone git@github.com:XiaoMi/shepher.git
+    $ cd shepher
     ```
-3. Run the script, start Shepher service and waiting start of each container in Docker accomplish
+3. Docker compose up to start services
 
     ```sh
-    $ sh bin/docker-run.sh start 
+    $ docker-compose up --build 
     ```
 4. Visit `http://localhost:8089` or self defined `server.url` (Reference to [Parameter instruction](Docs/Parameter.md))
 
