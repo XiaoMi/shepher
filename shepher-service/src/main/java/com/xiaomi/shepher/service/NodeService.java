@@ -26,6 +26,8 @@ import com.xiaomi.shepher.common.Role;
 import com.xiaomi.shepher.dao.NodeDAO;
 import com.xiaomi.shepher.exception.ShepherException;
 import com.xiaomi.shepher.util.ReviewUtil;
+import org.I0Itec.zkclient.exception.ZkNoNodeException;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -67,7 +70,13 @@ public class NodeService {
     private String serverUrl;
 
     public List<String> getChildren(String cluster, String path) throws ShepherException {
-        List<String> children = nodeDAO.getChildren(cluster, path);
+        List<String> children = null;
+        try {
+            children = nodeDAO.getChildren(cluster, path);
+        } catch (ZkNoNodeException e) {
+            logger.error("node [{}] not exist",((KeeperException.NoNodeException)e.getCause()).getPath());
+            return new ArrayList<>(0);
+        }
         Collections.sort(children);
         return children;
     }

@@ -31,6 +31,10 @@
                 </button>
                 <button class="btn btn-success rowbtn" id="import-button" onclick="showImportModal(); return false;" <#if !hasPermission>disabled</#if>>Import
                 </button>
+                <#if !isNodeExists>
+                    <button class="btn btn-success rowbtn" id="not-exists-node">The node not exists
+                    </button>
+                </#if>
                 <label class="checkbox" for="editable">
                     <input type="checkbox" value="" id="editable" data-toggle="checkbox"
                            <#if !hasPermission>disabled</#if>>
