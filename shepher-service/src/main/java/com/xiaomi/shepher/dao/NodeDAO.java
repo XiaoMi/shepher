@@ -47,6 +47,8 @@ public class NodeDAO {
                 return Collections.emptyList();
             }
             return zkClient.getChildren(path);
+        } catch (ZkNoNodeException e) {
+            throw e;
         } catch (Exception e) {
             LOGGER.warn("Fail to get children, Exception:", e);
             throw ShepherException.createUnknownException();

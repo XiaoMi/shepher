@@ -34,11 +34,13 @@ import com.xiaomi.shepher.util.ParamUtils;
 import com.xiaomi.shepher.util.ParentPathParser;
 import com.xiaomi.shepher.util.ReviewUtil;
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,18 +95,25 @@ public class NodeController {
                        @RequestParam(value = "show-ip", defaultValue = "") String showIp, Model model) throws ShepherException {
 
         List<String> children = nodeService.getChildren(cluster, path);
-
+        boolean isNodeExist = true;
+        if(CollectionUtils.isEmpty(children)) {
+            isNodeExist = false;
+        }
         List<Snapshot> snapshots = snapshotService.getByPath(path, cluster, 0, ReviewUtil.DEFAULT_PAGINATION_LIMIT);
         ReviewUtil.generateSummary(snapshots);
 
         long userId = userHolder.getUser().getId();
         boolean hasPermission = permissionService.isPathMember(userId, cluster, path);
         boolean hasDeletePermission = permissionService.isPathMaster(userId, cluster, path);
-
+        if(!isNodeExist) {
+            model.addAttribute("isNodeExists", isNodeExist);
+        }else {
+            model.addAttribute("isNodeExists", true);
+        }
         model.addAttribute("children", children);
         model.addAttribute("hasChild", !children.isEmpty());
-        model.addAttribute("data", StringEscapeUtils.escapeHtml4(nodeService.getData(cluster, path)));
-        model.addAttribute("stat", nodeService.getStat(cluster, path));
+        model.addAttribute("data", isNodeExist ? StringEscapeUtils.escapeHtml4(nodeService.getData(cluster, path)) : "null");
+        model.addAttribute("stat", isNodeExist ? nodeService.getStat(cluster, path) : new Stat());
         model.addAttribute("path", path);
         model.addAttribute("pathArr", path.split(SLASH));
         model.addAttribute("cluster", cluster);
