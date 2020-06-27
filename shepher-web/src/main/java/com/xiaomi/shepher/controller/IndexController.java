@@ -68,6 +68,10 @@ public class IndexController {
         if (StringUtils.isBlank(referer)) {
             referer = serverUrl;
         }
+        // check http_referer white list
+        if(!referer.startsWith(serverUrl)) {
+            return "redirect:error";
+        }
         if (ShepherConstants.LOGIN_TYPE_CAS.equals(loginType.toUpperCase())) {
             return "redirect:" + casServerLogoutUrl + "?service=" + referer;
         }
